@@ -1,0 +1,16 @@
+怎样SVN创建文件
+
+本地创建文件夹
+选中文件夹右键 - > svn-> import  - >填写描述 - >ok
+
+怎样上传svn文件
+
+进入文件夹中右键 - > svnCheckout-> ok->checkout->
+
+然后进入文件夹 - > svncommit提交文件
+
+查看SVN下某个路径下的svn文件
+svn->repo-browser->选择左边的目录->然后右键checkout目录即可下载到本地
+
+
+
