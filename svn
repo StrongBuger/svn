@@ -12,5 +12,8 @@
 查看SVN下某个路径下的svn文件
 svn->repo-browser->选择左边的目录->然后右键checkout目录即可下载到本地
 
+svn本地上传忽略某个目录文件
+Settings > General > Global ignore pattern 中添加node_modules或者其他
+
 
 
