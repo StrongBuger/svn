@@ -1,0 +1,136 @@
+
+/usr/local/mysql/bin/mysql -u root -p
+show databases;
+create database cg;
+drop database cg;
+
+
+use table
+show tables;
+describe account;
+drop table account;
+CREATE TABLE account1();
+//增加一列
+alter table [table_name] add [column_name] [data_type] [not null] [default]
+
+alter table account add c1 int(255) not null default 1;
+//删除一列
+alter table [table_name] drop [column_nam]
+
+alter table account drop c1;
+//修改列信息
+alter table [table_name] change [old_column_name][new_column_name][data_type]
+只改列名:
+data_type和原来一样,old_column_name!=new_column_name
+只改数据类型
+old_column_name-new_column_name data_type改变
+
+修改表名
+alter table [table_name] rename [new_table_name]
+
+alter table account rename newaccount;
+
+
+查看表数据
+select*from table_name;
+select col_name1,col_name2,col_name3 from table_name;
+
+插入数据
+insert into [table_name] values(值1,值2)
+insert into [table_name](列1,列2) values(值1,值2)
+
+where条件查询
+select*from table_name where col_name(运算符的值)
+select*from book where title='t';
+
+select*from table_name where coll=xxx and col2=xxx or col3>xx;
+
+where中null判断
+select * from table_name where col_name is null
+select * from table_name where col_name is not null;
+
+//查找不重复的数据 去掉重复的数据
+select distinct col_name from table_name;
+select distinct title from book;
+
+//对查询出来的结果进行升序和降序排序
+按照单一列名排序
+select * from table_name[where句子]order by col_name[asc/desc]
+按照多列排序
+select * from table_name[where句子]order by col1[asc/desc],col2[asc,desc]
+
+select * from book where id>0 order by id asc;
+select * from book where id>0 order by id desc;
+select * from book where id>0 order by content desc,pages asc;
+
+不加asc或者desc时,默认为asc
+
+截取
+select * from book order by id limit 2,2;(分页效果)
+
+从book中获取插入book1 做数据迁移
+insert into book1 select * from book where id !=1;
+
+insert into book1(content) select content from book where id !=1;
+
+
+更新表的某一行的数据内容
+update book set page=5 where id=6;
+
+修改单列
+update 表名 set 列名=xxx[where 字句]
+
+修改多列
+update 表名 set 列名1=xxx,列名2=xxx,列名3=xxx[where 字句]
+
+in语法
+
+select * from 表名 where 列名 in(value1,value2)
+select * from 表名 where 列名 in(select 列名 form 表名)
+select * from book where page in(2,6);
+select * from book1 where page in(select page where page>3);
+
+between
+select * from 表名 where 列名 between 值1 and 值2;
+select * from book1 where page between 2 and 5;
+
+select * from 表名 where 列名 not between 值1 and值2;
+select * from book1 where page not between 2 and 5;
+
+like
+
+select * from 表名 where 列名 [not] like pattern
+pattern 匹配模式 '%abc','abc%','%abc%'
+
+简易搜索 简易查询
+select * from book where title like 't%';
+
+
+
+CREATE TABLE book1(
+id bigint(20),
+title char(100),
+content varchar(255),
+page bigint(20)
+);
+
+
+
+CREATE TABLE account1(
+id bigint(20),
+createTime datetime,
+ip varchar(255),
+mobile varchar(255),
+nickname varchar(255),
+passwd varchar(255),
+username varchar(255),
+avatar varchar(255),
+brief text,
+job varchar(255),
+location varchar(255),
+qq varchar(255),
+gender int(11),
+city varchar(255),
+province varchar(255)
+);
+
